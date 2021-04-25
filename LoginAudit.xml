@@ -68,7 +68,7 @@
   <Actions Context="Author">
     <Exec>
       <Command>powershell</Command>
-      <Arguments>%HOMEPATH%\LoginAudit.ps1</Arguments>
+      <Arguments>%HOMEPATH%\LoginAudit.exe</Arguments>
     </Exec>
   </Actions>
 </Task>
