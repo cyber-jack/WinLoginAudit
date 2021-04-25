@@ -1,10 +1,9 @@
 # WinLoginAudit
 # @jacauc - 09 Jan 2018 
-# IMPORTANT! Please add your own Telegram Bot chat ID to the following variables.
+# IMPORTANT! Please add your own Discord Bot Webhook the following variable.
  
-$tokenID = "123456789:ABC-DEFghIJkLMNOPqrstUvWxYZ"
-$chatID = "-098765432"
-# Note: group ID's typically start with a minus sign
+$webhook = "https://discord.com/api/webhooks/<YOUR WEBHOOK>"
+
 
 
 # Logon Types
@@ -92,9 +91,9 @@ Foreach ($Entry in $colEvents)
 		$EvtSourceIP = $Entry.Properties[18].Value	
 		If (($EvtSourceIP -ne "") -and ($EvtSourceIP -ne "-") -and ($EvtSourceIP -ne "::1")) 
 			{
-				$SourceIPPresent = "*Source IP*: $EvtSourceIP`n"
+				$SourceIPPresent = "**Source IP**: $EvtSourceIP"
 		}
-		$Result += @("`n*Time*: $TimeGenerated `n*User*: $EvtLogonDomain\$EvtLogonUser `n*Result*: Success ($EvtLogonTypeDesc)`n$SourceIPPresent")
+		$Result += @("\n**Time**: $TimeGenerated \n**User**: $EvtLogonDomain\\$EvtLogonUser \n**Result**: Success ($EvtLogonTypeDesc) $SourceIPPresent")
 	} 
    
 	# Filter out some of the 4625 (failed) events  
@@ -103,13 +102,13 @@ Foreach ($Entry in $colEvents)
 		$EvtSourceIP = $Entry.Properties[19].Value
 		If (($EvtSourceIP -ne "") -and ($EvtSourceIP -ne "-") -and ($EvtSourceIP -ne "::1")) 
 			{
-				$SourceIPPresent = "*Source IP*: $EvtSourceIP`n"
+				$SourceIPPresent = "*Source IP*: $EvtSourceIP"
 			}
-		$Result += @("`n*Time*: $TimeGenerated `n*User*: $EvtLogonDomain\$EvtLogonUser `n*Result*: Fail`n$SourceIPPresent")
+		$Result += @("\n**Time**: $TimeGenerated \n**User**: $EvtLogonDomain\\$EvtLogonUser \n**Result**: Fail $SourceIPPresent")
 	} 
 }
 
-#if no results were returned, exit immediately and do not send Telegram message
+#if no results were returned, exit immediately and do not send Discord message
 #if ($result.count -eq 0) { exit }
 
 #Remove duplicate events
@@ -121,9 +120,10 @@ $ip = Test-Connection -ComputerName (hostname) -Count 1  | Select -ExpandPropert
 # convert IP address to string
 $ip = $ip.IPAddressToString
 
-#output the results to Telegram using an HTTP GET request
-curl "https://api.telegram.org/bot$tokenID/sendMessage?chat_id=$chatID&parse_mode=Markdown&text=*System Login Activity* %0A*$env:COMPUTERNAME* : $ip $result"
- 
-
- 
-
+#output the results to Discord using an HTTP POST request
+Write-Output($Result)
+$JSON = '{"username":"Windows",
+"avatar_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/1200px-Windows_logo_-_2012.svg.png", 
+"content":"**System Login Activity** at ' + $TimeGenerated + ': ' + $env:COMPUTERNAME + ' (' + $ip +') ' + $Result + '"}'
+Write-Output($JSON)
+Invoke-WebRequest -Uri "https://discord.com/api/webhooks/835969841634344992/fxjwbPPP_p2H-hdkW745bEvYgdP0OX6ERao2Mc6kxL6023sPno2LKi7Sx7nG72ehzX3P" -Method Post -Body $JSON -ContentType "application/json"
