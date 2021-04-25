@@ -30,8 +30,6 @@ Simplified instructions:
 3. (OR) Enable Powershell Scripts (see next step)
 4. Place the executable/script in your home folder
 
-# Special thanks
-Special thanks to jacauc as this is a fork of their repo: https://github.com/jacauc/WinLoginAudit
 # (optional) Enable Powershell Scripts
 1. Open PowerShell as an Administrator on the windows machine
 2. Type:
@@ -103,3 +101,5 @@ runas /user:test cmd
 2. Press Enter, Type any password and press Enter again
 3. You should now get an instant Discord message indicating the failed login attempt
 
+# Special thanks
+Special thanks to jacauc as this is a fork of their repo: https://github.com/jacauc/WinLoginAudit
