@@ -30,6 +30,8 @@ Simplified instructions:
 3. (OR) Enable Powershell Scripts (see next step)
 4. Place the executable/script in your home folder
 
+# Special thanks
+Special thanks to jacauc as this is a fork of their repo: https://github.com/jacauc/WinLoginAudit
 # (optional) Enable Powershell Scripts
 1. Open PowerShell as an Administrator on the windows machine
 2. Type:
