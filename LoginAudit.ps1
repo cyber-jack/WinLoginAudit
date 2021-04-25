@@ -126,4 +126,4 @@ $JSON = '{"username":"Windows",
 "avatar_url":"https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Windows_logo_-_2012.svg/1200px-Windows_logo_-_2012.svg.png", 
 "content":"**System Login Activity** at ' + $TimeGenerated + ': ' + $env:COMPUTERNAME + ' (' + $ip +') ' + $Result + '"}'
 Write-Output($JSON)
-Invoke-WebRequest -Uri "https://discord.com/api/webhooks/835969841634344992/fxjwbPPP_p2H-hdkW745bEvYgdP0OX6ERao2Mc6kxL6023sPno2LKi7Sx7nG72ehzX3P" -Method Post -Body $JSON -ContentType "application/json"
+Invoke-WebRequest -Uri $webhook -Method Post -Body $JSON -ContentType "application/json"
