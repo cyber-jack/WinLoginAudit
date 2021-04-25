@@ -16,7 +16,7 @@ Edit the .ps1 script directly, and add your telegram bot token and ID in the scr
 
 Pull requests or improvement suggestions welcome as this is Beta code.
 
-# Create a bot
+# Create a webhook
 
 Detailed instructions for setting up the Discord Webhook: https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks
 
@@ -26,6 +26,12 @@ Simplified instructions:
 2. Click the "Create Webhook" button to create a new webhook!
 
 ![2018-01-06_15-53-12](https://support.discord.com/hc/article_attachments/1500000463501/Screen_Shot_2020-12-15_at_4.41.53_PM.png)
+
+# Create your executable
+1. Edit LoginAudit.ps1 and add your Discord Webhook
+2. Use PS2EXE-GUI to convert your script into a binary (make sure you uncheck "Compile a graphic windows program")
+3. (OR) Enable Powershell Scripts (see next step)
+4. Place the executable/script in your home folder
 
 # (optional) Enable Powershell Scripts
 1. Open PowerShell as an Administrator on the windows machine
@@ -49,7 +55,7 @@ Run secpol.msc on the machine and navigate to Security Settings > Local Policies
 
 ![2018-01-06_16-34-00](https://user-images.githubusercontent.com/18201320/34640660-78298f52-f2ff-11e7-80c8-4f2877699e52.png)
 
-3. Import the MonitorLoginsTask.XML file
+3. Import the LoginAudit.XML file - Make sure to change the binary/script location at the bottom
 4. Change the task name if necessary
 5. On the "Actions" tab, ensure the parameter of the Powershell action points to the actual location of the edited LoginAudit.ps1 file (your TOKEN and GROUPID should already be saved into this file.)
 6. On the "General" tab, click on "Change User or Group" and select a local administrative user.
