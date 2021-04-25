@@ -54,7 +54,7 @@ Run secpol.msc on the machine and navigate to Security Settings > Local Policies
 
 3. Import the LoginAudit.XML file - Make sure to change the binary/script location at the bottom
 4. Change the task name if necessary
-5. On the "Actions" tab, ensure the parameter of the Powershell action points to the actual location of the edited LoginAudit.ps1 file (your TOKEN and GROUPID should already be saved into this file.)
+5. On the "Actions" tab, ensure the parameter of the Powershell action points to the actual location of the edited LoginAudit.ps1/exe file (your Discord webhook should already be saved into this file.)
 6. On the "General" tab, click on "Change User or Group" and select a local administrative user.
 7. Click OK and type the correct password for aforementioned user.
 
