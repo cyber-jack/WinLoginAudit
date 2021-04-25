@@ -1,4 +1,4 @@
-# Receive instant SUCCESSFUL or FAILED windows login attempt notifications on your Telegram chat app (Android/IOS/Windows/MAC) 
+# Receive instant SUCCESSFUL or FAILED windows login attempt notifications on your Discord chat app (Android/IOS/Windows/MAC) 
 
 [![Donate Bitcoin](https://user-images.githubusercontent.com/18201320/42027759-bdec89d8-7aca-11e8-91b4-f36648eb0ae7.png)](https://jacauc.github.io/donate-bitcoin/)
 
@@ -18,39 +18,16 @@ Pull requests or improvement suggestions welcome as this is Beta code.
 
 # Create a bot
 
-Detailed instructions for setting up the Telegram Bot: https://www.forsomedefinition.com/automation/creating-telegram-bot-notifications/
+Detailed instructions for setting up the Discord Webhook: https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks
 
 Simplified instructions:
 
-0. Use telegram
-1. Chat with @botfather
-2. Type /newbot
-3. Give your bot a name... e.g. mywinloginaudit
-4. Give your bot a username... e.g. mywinloginauditbot
-5. You will get a message like this:
+1. Open your Server Settings and head into the Integrations tab:
+2. Click the "Create Webhook" button to create a new webhook!
 
-![2018-01-06_15-53-12](https://user-images.githubusercontent.com/18201320/34640372-fd5d8314-f2f9-11e7-9b86-c9a30ee889b2.png)
+![2018-01-06_15-53-12](https://support.discord.com/hc/article_attachments/1500000463501/Screen_Shot_2020-12-15_at_4.41.53_PM.png)
 
-6. RECORD THE TOKEN SHOWN IN THE MESSAGE
-7. Start a chat with your bot and type /start
-8. Type a test message for the bot like "hello"
-9. Exit aforementioned chat and create a Telegram Group conversation. Call it something like "System Notifications"
-10. Invite your bot to the group.
-11. Access the following page (insert your bot's TOKEN and remove the <<< and >>> characters): 
-```
-https://api.telegram.org/bot<<<TOKEN>>>/getUpdates
-```
-12. Look for the group's ID as shown in green below. The group ID will normally be preceded by a minus sign. RECORD THE GROUPID:
-
-![2018-01-06_16-06-23](https://user-images.githubusercontent.com/18201320/34640491-4faaa5f0-f2fc-11e7-853e-72cc5b1df323.png)
-
-13. Do a test - You should now get a hello world message in the telegram group from your bot. If this didn't work, check steps 1-11 again. 
-  ```
-  https://api.telegram.org/bot<<<TOKEN>>>/sendMessage?chat_id=<<<-GROUPID>>>&text=Hello+World
-  ```
-14. Keep your GROUPID and TOKEN and replace the values accordingly in the .ps1 powershell script file.
-
-# Enable Powershell Scripts
+# (optional) Enable Powershell Scripts
 1. Open PowerShell as an Administrator on the windows machine
 2. Type:
 ```
@@ -59,8 +36,6 @@ set-executionpolicy remotesigned
 3. Type A and press Enter
 
 ![2018-01-06_16-30-40](https://user-images.githubusercontent.com/18201320/34640635-0fd9e8de-f2ff-11e7-9081-e6ac47c640d2.png)
-
-
 
 # Edit Security Policy
 Run secpol.msc on the machine and navigate to Security Settings > Local Policies > Audit Policy and change the "Audit account logon events" and "Audit logon events" policies to audit SUCCESS and FAILURE events
