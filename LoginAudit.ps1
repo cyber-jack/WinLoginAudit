@@ -109,7 +109,7 @@ Foreach ($Entry in $colEvents)
 }
 
 #if no results were returned, exit immediately and do not send Discord message
-#if ($result.count -eq 0) { exit }
+if ($result.count -eq 0) { exit }
 
 #Remove duplicate events
 $result = $result |Sort-Object -Unique
