@@ -99,6 +99,5 @@ NOTE: The scheduled task is created to filter out 4624 and 4625 events as follow
 runas /user:test cmd
 ```
 2. Press Enter, Type any password and press Enter again
-3. You should now get an instant telegram message indicating the failed login attempt
+3. You should now get an instant Discord message indicating the failed login attempt
 
-![2018-01-06_16-40-22](https://user-images.githubusercontent.com/18201320/34640711-63ec9b32-f300-11e7-8b8c-c1ce1a447d49.png)
